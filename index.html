@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Interkative Einkaufsliste</title>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"
+        integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container shadow p-3 mb-5 bg-body rounded">
+        <h1>Einkaufsliste</h1>
+        <button type="button" class="btn btn-outline-secondary mb-3" onclick="addNewItem(); updateList();">Neuen Eintrag
+            hinzufügen</button>
+        <p class="alert alert-success" role="alert" hidden="true" id="message">
+
+        </p>
+        <ul class="list list-group" id="list">
+        </ul>
+    </div>
+
+    <script>
+
+        let shoppingItems = getShoppingItemsFromLocalStorage();
+        updateList();
+
+        //Holt vorhandene Einträge aus dem Browserspeicher zurück
+        function getShoppingItemsFromLocalStorage() {
+            let items = localStorage.getItem('shoppingItems',);
+            if (items == null || items == '') {
+                items = [];
+            } else {
+                items = items.split(',');
+            }
+            return items;
+        }
+
+        //Fügt neue Gegenstände der Einkaufliste hinzu
+        function addNewItem() {
+            let item = prompt("Was möchtest du hinzufügen?");
+            shoppingItems.push(item);
+            localStorage.setItem('shoppingItems', shoppingItems);
+        }
+
+        //Aktualisiert die Einkaufliste auf neue Einträge
+        function updateList() {
+            document.getElementById('list').innerHTML = '';
+
+            for (let index = 0; index < shoppingItems.length; index++) {
+                document.getElementById('list').innerHTML += '<li class="list-group-item list-group-item-action ms-3">' + shoppingItems[index] +
+                    '<button style="margin-left: 3rem;" type="button" class="btn btn-outline-danger" onclick="removeItem(' + index + 
+                    '); updateList();">X</button></li>';
+            }
+        }
+
+        //Entfernt einen Eintrag aus der Einkaufsliste komplett
+        function removeItem(itemIndex) {
+            shoppingItems.splice(itemIndex, 1);
+            localStorage.setItem('shoppingItems', shoppingItems);
+        }
+
+    </script>
+</body>
+
+</html>
