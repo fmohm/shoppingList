@@ -1,0 +1,97 @@
+/*Stylesheet layout design,
+include this file into the html-file in which you wish to design
+develop by fabian mohm*/
+
+/*layout for html envouriment*/
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+}
+
+/*layout for Body-Tag*/
+body {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: whitesmoke;
+    color: #212529;
+    text-align: left;
+}
+
+/*layout for directionArea*/
+div {
+    padding: 1rem;
+    margin-bottom: 3rem;
+    box-shadow: 0.5rem 1rem rgba(0,0,0,.15);
+    border-radius: 25rem;
+    max-width: 1140px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/*layout for first heading*/
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-top: 0;
+}
+
+/*layout for button*/
+button {
+    margin-bottom: 1rem;
+    color: #6c757d;
+    border-color: #6c757d;
+    display: inline-block;
+    font-weight: 400;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+}
+
+/*layout for paragraph*/
+p {
+    margin-top: 0;
+}
+
+p #message {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+/*layout for unsorted list*/
+ul {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    border-radius: .25rem;
+}
+
+/*layout for list elements*/
+li {
+    position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+li:last-child {
+    border-bottom-right-radius: inherit;
+    border-bottom-left-radius: inherit;
+}
+
